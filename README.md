@@ -1,48 +1,44 @@
-# Autograph Scientific Figures
+# Autograph: Generate figures from data without code
 
-Autograph Scientific Figures is a portable agent workflow for generating publication-style academic figures in R. It gives an LLM a structured figure-generation process, bundled visual guidelines, bundled colour guidance, and a visual QA protocol for iterating on exported PNGs before returning a final figure.
+A guided agentic workflow for generating publication-quality academic figures with R without coding. It gives an LLM a structured figure-generation process, visual and structural guidelines, and a thorough quality-checking protocol for creating, editing and refining figure files using R (.PNG outputs).
 
-The workflow is designed for researchers who want high-quality figures from their own tabular data while keeping the figure code and outputs organised in a local project folder.
+All data represented in figures is deterministic, originating from your source data files and called through R.
+
+Let your team spend more time on science and less on wrangling code.
 
 ## How To Use
 
-Use Autograph Scientific Figures through the installed `make-figure` skill. The two main commands are:
+Once installed, use Autograph through the installed `make-figure` skill. The two main commands are:
 
-1. `/make-figure`, for creating a new figure from a stated input directory.
-2. `/make-figure edit`, for revising an existing figure script or exported PNG from a prior figure session.
+1. `/make-figure`, for creating a new figure.
+2. `/make-figure edit`, for revising an existing figure R script or export PNG.
 
-The workflow checks R dependencies on first use, reads the bundled house-style and colour guidance, writes one stable R script per figure, exports versioned PNG outputs, visually checks the result, and iterates until the figure passes QA.
+New to R? Autograph installs all required R dependencies needed automatically on first run.
 
-### What `/make-figure` Does
+### How To `/make-figure` Effectively
 
 Use `/make-figure` when you want to create a new figure. Give the agent:
 
-1. The input directory containing your data.
-2. The file or files to use.
-3. The graph type, such as line graph, forest plot, bar graph, percentage-change graph, age-sex pyramid, choropleth map, or heatmap.
-4. The exact variables for axes, estimates, uncertainty intervals, colours, groups, panels, and filters.
-5. A project name or output directory, if you want one.
-6. Any style constraints or reference image.
-
-The skill creates outputs under:
-
+When you start a new session, give the agent:
+1. The input directory containing your data (as a pathname, or a file).
+2. The desired output folder (you may suggest a project or folder name too) in which Autograph creates two folders:
 ```text
 ./fig-dhs-output-main-dir/
 ./fig-dhs-activesessions-dir/
 ```
-
-relative to the current project working directory, unless you provide an absolute output directory.
+For each figure, provide:
+1. The graph type (line graph, forest plot, bar graph, percentage-change graph, age-sex graph, choropleth map, heatmap, etc)
+2. Variables. Be as detailed as possible. Nevertheless, Autograph can infer filters or variables that are not directly provided based on context, but specify this to the user after output.
+3. Any other style constraints.
 
 ### New Figure Example
 
 ```text
 /make-figure
 Input directory: /path/to/autograph-scientific-figures/examples/minimal-data
-Project name: example burden demo
-Make a line graph of age-standardised mortality rate from 2000 to 2025 using burden_timeseries.csv.
+Project name: burden demo
+Make a line graph of AS mortality rate from 2000 to 2025, global
 Use year on the x-axis, estimate on the y-axis, cause as colour, and lower/upper as uncertainty ribbons.
-Filter to location = Global, sex = Both, age_group = Age-standardised, measure = Mortality rate, metric = Rate per 100,000.
-Use a clean publication style suitable for a manuscript figure.
 ```
 
 ### Stacked Bar Example
