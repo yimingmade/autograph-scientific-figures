@@ -132,7 +132,9 @@ Across a project, Autograph remembers your preferences and applies them intellig
   <img src="docs/images-autograph/img3.png" alt="Autograph colour structure and quality assurance workflow" width="900">
 </p>
 
-## Installation
+## 3️⃣ Installation
+
+Copy this github link into any LLM and ask it to install this repo. Allow permissions when prompted.
 
 ### Installation For AI Agents
 
