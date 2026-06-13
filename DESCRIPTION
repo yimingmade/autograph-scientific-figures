@@ -1,6 +1,6 @@
 Package: makefigure
 Type: Project
-Title: Portable Academic Figure Generation Skill
+Title: Autograph Scientific Figures Portable Skill
 Version: 0.1.0
 Authors@R: person("Yiming", role = c("aut", "cre"))
 Description: A portable LLM skill for generating publication-style academic figures in R using ggplot2, patchwork, bundled house-style guidelines, and visual QA instructions.

@@ -1,13 +1,13 @@
-# make-figure
+# Autograph Scientific Figures
 
-`make-figure` is a portable agent workflow for generating publication-style academic figures in R. It gives an LLM a structured figure-generation process, bundled visual guidelines, bundled colour guidance, and a visual QA protocol for iterating on exported PNGs before returning a final figure.
+Autograph Scientific Figures is a portable agent workflow for generating publication-style academic figures in R. It gives an LLM a structured figure-generation process, bundled visual guidelines, bundled colour guidance, and a visual QA protocol for iterating on exported PNGs before returning a final figure.
 
 The workflow is designed for researchers who want high-quality figures from their own tabular data while keeping the figure code and outputs organised in a local project folder.
 
 ## What Is Included
 
 ```text
-make-figure/
+autograph-scientific-figures/
   .codex/
     skills/
       make-figure/
@@ -167,7 +167,7 @@ Example:
 
 ```text
 /make-figure
-Input directory: /path/to/make-figure/examples/minimal-data
+Input directory: /path/to/autograph-scientific-figures/examples/minimal-data
 Project name: example burden demo
 Make a line graph of age-standardised mortality rate from 2000 to 2025 using burden_timeseries.csv.
 Use year on the x-axis, estimate on the y-axis, cause as colour, and lower/upper as uncertainty ribbons.
