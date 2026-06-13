@@ -106,6 +106,10 @@ Autograph edits the same figure-specific R script, writes the next versioned out
 
 If the target script or PNG cannot be identified, Autograph will stop and ask you to point to the figure that should be edited.
 
+<p align="center">
+  <img src="docs/images-autograph/editexp1.png" alt="Example figure edit prompt and output" width="900">
+</p>
+
 ```text
 /make-figure edit
 I want to include 4 new rows for lab data: resting BP (10s), cholesterol (50s), max heart rate and FPG>120, 
@@ -114,15 +118,15 @@ add alternating grey bars to make rows easier to read
 i like square markers and translucent CI lines
 ```
 
-<p align="center">
-  <img src="docs/images-autograph/editexp1.png" alt="Example figure edit prompt and output" width="900">
-</p>
+## Professional colour, structure and design, every time, for your entire paper.
 
-## Extensive colour, structure, quality assurance guidelines
+Autograph uses three bundled reference files during figure creation. 
+1. Style guidelines define graph-specific structure intelligently, including axis treatment, panel spacing, hierarchy, legends, labels, titles, export sizing, and when to use each graph type. Line graphs, forest plots, stacked bars, tornado plots, maps, and heatmaps.
+2. Colour guidelines assign colours based on meaning and readability rather than decoration alone.
+3. Multi-step visual QA which rejects and fixes outputs with clipped information, overlapping elements, missing units, weak labels, poor hierarchy, inconsistent colour mapping, crowded legends, broken structure, and unbalanced panels or spacing.
+If a figure fails QA, Autograph edits the same R script and exports a new versioned PNG folder. This repeats until the final figure is visually readable, structurally faithful to the data, and publicatino-ready.
 
-Autograph uses three bundled reference files during figure creation. The house-style guide defines graph-specific structure, including axis treatment, panel spacing, hierarchy, legends, labels, titles, export sizing, and when to use line graphs, forest plots, stacked bars, tornado plots, maps, and heatmaps. The colour guide gives semantic palette rules, so colours are chosen for meaning and readability rather than decoration. The checking guide defines the visual QA pass used after export.
-
-The workflow is iterative. Autograph first identifies the graph type, reads the input data, writes an R script, exports a PNG, then inspects the rendered image. It checks for clipped content, overlap, missing units, weak labels, poor hierarchy, inconsistent colour mapping, crowded legends, broken time-series structure, and unbalanced panels. If the figure fails QA, Autograph edits the same R script and exports a new versioned PNG folder. This repeats until the final figure is visually readable, structurally faithful to the data, and ready for manuscript use.
+Across a project, Autograph remembers your preferences and applies them intelligently for all future figures created for the same project. Changing analysis strategy, colours, label names and other details are intelligently applied to all figures across a project.
 
 <p align="center">
   <img src="docs/images-autograph/img3.png" alt="Autograph colour structure and quality assurance workflow" width="900">
