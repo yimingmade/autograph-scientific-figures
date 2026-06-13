@@ -1,0 +1,18 @@
+category,start_year,end_year,start_value,end_value,percent_change,lower,upper
+Cardiovascular disease,2000,2025,142.4,108.2,-24.0,-30.4,-17.2
+Chronic obstructive pulmonary disease,2000,2025,62.1,49.5,-20.3,-27.8,-11.5
+Endocrine disease,2000,2025,38.6,56.4,46.1,32.0,61.7
+Region A cardiovascular disease,2000,2025,118.5,90.5,-23.6,-31.0,-15.1
+Region B cardiovascular disease,2000,2025,169.2,132.7,-21.6,-28.9,-13.0
+Population ageing contribution,2000,2025,18.0,32.0,77.8,60.0,98.0
+Population growth contribution,2000,2025,22.0,13.0,-40.9,-52.0,-27.0
+Behavioural risk contribution,2000,2025,35.0,21.0,-40.0,-50.5,-28.0
+Metabolic risk contribution,2000,2025,15.0,28.0,86.7,65.0,111.0
+Environmental risk contribution,2000,2025,10.0,6.0,-40.0,-55.0,-21.0
+Chronic kidney disease,2000,2025,24.0,39.2,63.3,45.0,84.0
+Infectious disease,2000,2025,72.0,50.4,-30.0,-41.5,-17.0
+Cancer,2000,2025,96.3,83.7,-13.1,-21.0,-4.5
+Neurological disease,2000,2025,27.8,40.5,45.7,28.0,66.0
+Mental health conditions,2000,2025,8.4,11.7,39.3,17.0,65.0
+Musculoskeletal disease,2000,2025,5.2,7.1,36.5,12.0,62.0
+Digestive disease,2000,2025,34.2,28.9,-15.5,-27.0,-2.0

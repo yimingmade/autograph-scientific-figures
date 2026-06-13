@@ -1,0 +1,23 @@
+Package: makefigure
+Type: Project
+Title: Portable Academic Figure Generation Skill
+Version: 0.1.0
+Authors@R: person("Yiming", role = c("aut", "cre"))
+Description: A portable LLM skill for generating publication-style academic figures in R using ggplot2, patchwork, bundled house-style guidelines, and visual QA instructions.
+License: MIT
+Encoding: UTF-8
+Imports:
+    data.table,
+    ggplot2,
+    patchwork,
+    scales,
+    ggrepel,
+    showtext,
+    sysfonts,
+    sf,
+    rnaturalearth,
+    ragg,
+    magick,
+    png,
+    ggthemes,
+    stringr

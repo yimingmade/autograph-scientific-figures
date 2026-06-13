@@ -1,0 +1,8 @@
+interface:
+  display_name: "Make Figure"
+  short_description: "Generate publication-style academic figures"
+  default_prompt: "Use $make-figure to generate a publication-style academic figure from my local data."
+
+policy:
+  allow_implicit_invocation: true
+

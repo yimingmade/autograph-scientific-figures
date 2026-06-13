@@ -1,0 +1,17 @@
+.DS_Store
+.Rhistory
+.RData
+.Rproj.user/
+Rplots.pdf
+
+fig-dhs-output-main-dir/
+fig-dhs-activesessions-dir/
+
+*.log
+*.tmp
+*.bak
+*.zip
+__pycache__/
+*.pyc
+
+__MACOSX/
