@@ -16,12 +16,18 @@ autograph-scientific-figures/
           openai.yaml
         references/
         assets/
+        scripts/
+          check_r_setup.R
+          install_r_dependencies.R
   .claude/
     skills/
       make-figure/
         SKILL.md
         references/
         assets/
+        scripts/
+          check_r_setup.R
+          install_r_dependencies.R
   SKILL.md
   README.md
   LICENSE
@@ -41,9 +47,11 @@ autograph-scientific-figures/
       subgroup_estimates.csv
     example-briefs.md
   scripts/
+    check_r_setup.R
     install.sh
     install_codex_skill.py
     install_claude_skill.py
+    install_r_dependencies.R
   DESCRIPTION
 ```
 
@@ -74,7 +82,7 @@ bash scripts/install.sh --all --validate-only
 ```
 
 5. Restart the host agent application if it only discovers skills at launch.
-6. Confirm that R and the required R packages are available.
+6. Confirm that R is available.
 7. Run a first test using the synthetic example data in `examples/minimal-data/`.
 
 Do not move files out of the skill folder during installation. The workflow resolves bundled references relative to `SKILL.md`.
@@ -115,6 +123,8 @@ Restart Claude Code after copying the skill.
 
 ## R Dependencies
 
+On first use, the skill checks core R package availability before rendering a figure. If core packages are missing, the workflow installs the missing core packages with the bundled installer script.
+
 Minimum expected dependencies:
 
 1. R
@@ -153,6 +163,30 @@ install.packages(c(
 ```
 
 Some spatial and image packages may need system libraries depending on the operating system.
+
+Check the current machine manually with:
+
+```bash
+Rscript scripts/check_r_setup.R --install-command
+```
+
+Preview package installation without installing anything:
+
+```bash
+Rscript scripts/install_r_dependencies.R --core --dry-run
+```
+
+Install missing core packages manually:
+
+```bash
+Rscript scripts/install_r_dependencies.R --core
+```
+
+Install selected optional packages only when a requested figure needs them:
+
+```bash
+Rscript scripts/install_r_dependencies.R --packages ggrepel,showtext,sysfonts
+```
 
 ## How To Use
 

@@ -17,8 +17,39 @@ Use these packaged references:
 2. `references/core-colour-guidelines.md`
 3. `references/checking-function.md`
 4. `assets/bad-examples/`
+5. `scripts/check_r_setup.R`
+6. `scripts/install_r_dependencies.R`
 
 Resolve `./fig-dhs-output-main-dir` and `./fig-dhs-activesessions-dir` relative to the current project working directory unless the user explicitly supplies an absolute output directory.
+
+## First-Use R Dependency Setup
+
+Before generating or rendering the first figure in a fresh environment, run the bundled R dependency checker from the directory containing this `SKILL.md`:
+
+```bash
+Rscript scripts/check_r_setup.R --install-command
+```
+
+If any core R packages are missing, install the missing core packages before writing or running figure code:
+
+```bash
+Rscript scripts/install_r_dependencies.R --core
+```
+
+Core packages are:
+
+1. `data.table`
+2. `ggplot2`
+3. `patchwork`
+4. `scales`
+
+Optional packages may be required for specific figure types or export paths. Install optional packages only when the requested figure or generated R script needs them. For example:
+
+```bash
+Rscript scripts/install_r_dependencies.R --packages ggrepel,showtext,sysfonts
+```
+
+Do not install the full optional package set by default. If dependency installation fails, stop before rendering and report the missing package names and the attempted install command.
 
 ## Trigger
 
@@ -351,50 +382,51 @@ Do not overwrite unrelated figure scripts unless the user explicitly asks for th
 ## Workflow
 
 1. Parse the figure brief.
-2. Confirm the user-specified input directory. If absent, ask for it before continuing.
-3. Determine the session project output directory:
+2. Run first-use R dependency setup using `scripts/check_r_setup.R`. Install missing core packages with `scripts/install_r_dependencies.R --core` before rendering.
+3. Confirm the user-specified input directory. If absent, ask for it before continuing.
+4. Determine the session project output directory:
    - use the user-specified output directory if present
    - otherwise infer the project name and create `./fig-dhs-output-main-dir/<project-slug>`
-4. For all figures in the same `/make-figure` chat session, reuse this same session output directory.
-5. If multiple agents are involved, instruct all agents to use the same session output directory and coordinate version allocation before any rendering begins.
-6. Create or confirm the session project output directory's `r-code` folder.
-7. Create or confirm the active session directory:
+5. For all figures in the same `/make-figure` chat session, reuse this same session output directory.
+6. If multiple agents are involved, instruct all agents to use the same session output directory and coordinate version allocation before any rendering begins.
+7. Create or confirm the session project output directory's `r-code` folder.
+8. Create or confirm the active session directory:
    - `./fig-dhs-activesessions-dir/<project-output-basename>-session`
-8. Determine the next session-level PNG output folder for the current date:
+9. Determine the next session-level PNG output folder for the current date:
    - `output-DDMMYYYY-v1`, then `output-DDMMYYYY-v2`, and so on
-9. If multiple figures are generated or edited together, assign one shared target version folder for that render round.
-10. If this is an update after an existing version folder, prepare the next version folder by copying forward unchanged PNGs from the latest previous version folder.
-11. Detect whether the request is:
+10. If multiple figures are generated or edited together, assign one shared target version folder for that render round.
+11. If this is an update after an existing version folder, prepare the next version folder by copying forward unchanged PNGs from the latest previous version folder.
+12. Detect whether the request is:
    - a new figure request, or
    - an edit request using `/make-figure edit`
-12. In edit mode, identify the existing figure assets to revise:
+13. In edit mode, identify the existing figure assets to revise:
    - current R script
    - current output PNG
    - any attached or referenced PNG showing the current figure state
-13. If edit mode is requested but the target figure cannot be identified from the request, session project output directory, or active session context, ask the user to specify which figure script or PNG should be edited.
-14. Identify:
+14. If edit mode is requested but the target figure cannot be identified from the request, session project output directory, or active session context, ask the user to specify which figure script or PNG should be edited.
+15. Identify:
    - figure type
    - x-axis and y-axis variables
    - grouping variables
    - labels and titles
    - requested measures, units, or years
    - any user-specified design constraints
-15. Read the reference image visually if present.
-16. Read the applicable guideline `.md` files.
-17. For a new figure, write the R script to match the brief and the guidelines.
-18. For an edit request, modify the existing R script to implement the requested changes while preserving the established figure intent unless the user asks otherwise.
-19. Use R with `ggplot2`; use `patchwork` for multi-panel layouts and `ggsave()` for PNG export unless the user explicitly requests otherwise.
-20. Run a syntax parse check before execution:
+16. Read the reference image visually if present.
+17. Read the applicable guideline `.md` files.
+18. For a new figure, write the R script to match the brief and the guidelines.
+19. For an edit request, modify the existing R script to implement the requested changes while preserving the established figure intent unless the user asks otherwise.
+20. Use R with `ggplot2`; use `patchwork` for multi-panel layouts and `ggsave()` for PNG export unless the user explicitly requests otherwise.
+21. Run a syntax parse check before execution:
 
 ```bash
 Rscript -e "parse(file='path/to/script.R')"
 ```
 
-21. Run the script.
-22. Read the generated PNG visually in full.
-23. Read and apply the visual QA checking agent protocol:
+22. Run the script.
+23. Read the generated PNG visually in full.
+24. Read and apply the visual QA checking agent protocol:
    - `references/checking-function.md`
-24. Run one full QA round using:
+25. Run one full QA round using:
    - the rendered PNG
    - the R script
    - the original figure prompt or edit request
@@ -402,24 +434,24 @@ Rscript -e "parse(file='path/to/script.R')"
    - `references/core-colour-guidelines.md`
    - any applicable local session guideline files
    - the reference image, if provided
-25. The internal QA round must return `QA: PASS` or `QA: FAIL`.
-26. If QA fails, list all QA failure reasons found in that round, ordered by the priority list in `references/checking-function.md`.
+26. The internal QA round must return `QA: PASS` or `QA: FAIL`.
+27. If QA fails, list all QA failure reasons found in that round, ordered by the priority list in `references/checking-function.md`.
    - Do not stop at the first failure.
    - Do not end a QA round as soon as one issue is found.
    - Identify every visible or inferable QA failure that can reasonably be found from the PNG, prompt, script, guidelines, and reference image.
-27. If QA fails, edit the same figure-specific R script using all failure reasons from that QA round, create the next available `output-DDMMYYYY-vN` folder, copy forward unchanged PNGs from the previous version folder, export the rerendered PNG into the new version folder, read the new PNG visually, and run QA again.
-28. Repeat the render, QA, repair, and rerender cycle until QA passes.
+28. If QA fails, edit the same figure-specific R script using all failure reasons from that QA round, create the next available `output-DDMMYYYY-vN` folder, copy forward unchanged PNGs from the previous version folder, export the rerendered PNG into the new version folder, read the new PNG visually, and run QA again.
+29. Repeat the render, QA, repair, and rerender cycle until QA passes.
    - Multiple QA cycles are permitted.
    - Never ship a final output if any QA point still fails.
-29. After three failed QA rounds, if the fourth QA round still fails, pause normal repair and troubleshoot why QA is repeatedly failing.
+30. After three failed QA rounds, if the fourth QA round still fails, pause normal repair and troubleshoot why QA is repeatedly failing.
    - Check whether the wrong plot object or output file is being edited.
    - Check whether `ggsave()` is exporting a different object from the one being fixed.
    - Check whether a later `theme()`, `scale_*()`, layout, or patchwork call overwrites the repair.
    - Check whether the output dimensions make the requested layout impossible.
    - Check whether the user prompt, data, house style, and reference image conflict.
    - Decide whether a structural redesign or user clarification is needed before continuing.
-30. In edit mode, also confirm that the user-requested edits are actually visible in the final PNG before returning it.
-31. Once QA passes, return:
+31. In edit mode, also confirm that the user-requested edits are actually visible in the final PNG before returning it.
+32. Once QA passes, return:
    - the final PNG path or paths
    - the R script path
    - `QA: PASS after <N> QA round(s)`

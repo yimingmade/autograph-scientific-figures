@@ -34,6 +34,8 @@ def validate_source(src: Path) -> list[str]:
         src / "references" / "core-colour-guidelines.md",
         src / "references" / "checking-function.md",
         src / "assets" / "bad-examples",
+        src / "scripts" / "check_r_setup.R",
+        src / "scripts" / "install_r_dependencies.R",
     ]
     missing = [str(path) for path in required if not path.exists()]
     return missing
@@ -95,4 +97,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
