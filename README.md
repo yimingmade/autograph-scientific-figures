@@ -1,4 +1,6 @@
-[img1-here]
+<p align="center">
+  <img src="docs/images-autograph/img1.png" alt="Autograph overview" width="900">
+</p>
 
 # Welcome to autograph
 
@@ -8,7 +10,9 @@ All data represented in figures is deterministic, originating from your source d
 
 Let your team spend more time on science and less on wrangling code.
 
-[img2-here]
+<p align="center">
+  <img src="docs/images-autograph/img2.png" alt="Autograph figure workflow" width="900">
+</p>
 
 ## How To Use
 
@@ -37,7 +41,9 @@ For each figure, provide:
 
 ### Write as you are; Autograph figures out the rest
 
-[exp4-here]
+<p align="center">
+  <img src="docs/images-autograph/exp4.png" alt="Example survival graph prompt and output" width="900">
+</p>
 
 ```text
 /make-figure; my data is in users/yiming/desktop/data-file
@@ -46,7 +52,9 @@ survival graph for my three age quartiles
 
 ### Robust plots with minimal guidance
 
-[exp1-here]
+<p align="center">
+  <img src="docs/images-autograph/exp1.png" alt="Example stacked bar graph prompt and output" width="900">
+</p>
 
 ```text
 /make-figure; my data is in users/yiming/desktop/data-file
@@ -58,7 +66,9 @@ i want subtle pastel colours
 
 ### Understands complex graph types without code
 
-[exp2-here]
+<p align="center">
+  <img src="docs/images-autograph/exp2.png" alt="Example tornado plot prompt and output" width="900">
+</p>
 
 ```text
 /make-figure of FOUR two sided bar ("tornado") plots arranged 2*2
@@ -71,7 +81,9 @@ male on the left x axis, female on the right x axis, and age down the y axis in 
 
 ### Create multi-panel figures with ease
 
-[exp3-here]
+<p align="center">
+  <img src="docs/images-autograph/exp3.png" alt="Example multi-panel figure prompt and output" width="900">
+</p>
 
 ```text
 /make-figure a violin plot for my cholesterol and SBP data, measured from 2024 vs from 2025
@@ -102,13 +114,19 @@ add alternating grey bars to make rows easier to read
 i like square markers and translucent CI lines
 ```
 
-[editexp-1]
+<p align="center">
+  <img src="docs/images-autograph/editexp1.png" alt="Example figure edit prompt and output" width="900">
+</p>
 
 ## Extensive colour, structure, quality assurance guidelines
 
-[info-here]
+Autograph uses three bundled reference files during figure creation. The house-style guide defines graph-specific structure, including axis treatment, panel spacing, hierarchy, legends, labels, titles, export sizing, and when to use line graphs, forest plots, stacked bars, tornado plots, maps, and heatmaps. The colour guide gives semantic palette rules, so colours are chosen for meaning and readability rather than decoration. The checking guide defines the visual QA pass used after export.
 
-[img3-here]
+The workflow is iterative. Autograph first identifies the graph type, reads the input data, writes an R script, exports a PNG, then inspects the rendered image. It checks for clipped content, overlap, missing units, weak labels, poor hierarchy, inconsistent colour mapping, crowded legends, broken time-series structure, and unbalanced panels. If the figure fails QA, Autograph edits the same R script and exports a new versioned PNG folder. This repeats until the final figure is visually readable, structurally faithful to the data, and ready for manuscript use.
+
+<p align="center">
+  <img src="docs/images-autograph/img3.png" alt="Autograph colour structure and quality assurance workflow" width="900">
+</p>
 
 ## Installation For AI Agents
 
@@ -301,6 +319,17 @@ autograph-scientific-figures/
       percentage_change.csv
       subgroup_estimates.csv
     example-briefs.md
+  docs/
+    images-autograph/
+      editexp1.png
+      exp1.png
+      exp2.png
+      exp3.png
+      exp4.png
+      img1.png
+      img2.png
+      img3.png
+      img4.png
   scripts/
     check_r_setup.R
     install.sh
@@ -314,4 +343,6 @@ autograph-scientific-figures/
   DESCRIPTION
 ```
 
-[img4-here]
+<p align="center">
+  <img src="docs/images-autograph/img4.png" alt="Autograph repository contents" width="900">
+</p>
