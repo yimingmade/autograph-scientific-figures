@@ -64,6 +64,7 @@ Use direct, readable labels and keep the legend compact.
 Input directory: /path/to/autograph-scientific-figures/examples/minimal-data
 Project name: example subgroup demo
 Make a forest plot using subgroup_estimates.csv.
+Filter to year = 2025.
 Show estimate on the x-axis, subgroup on the y-axis, and lower/upper as confidence intervals.
 Use domain as colour and include a vertical reference line at reference_value = 1.
 Group related rows clearly.
@@ -234,10 +235,10 @@ The files in `examples/minimal-data/` are fully synthetic. The values were inven
 
 The example data support:
 
-1. Line graphs and time-series plots.
-2. Stacked bar graphs.
-3. Dot plots and forest plots.
-4. Percentage-change graphs.
+1. Annual line graphs and time-series plots for every year from 2000 to 2025.
+2. Annual stacked bar graphs for every year from 2000 to 2025.
+3. Dot plots and forest plots, with subgroup estimates in both 2000 and 2025.
+4. Percentage-change graphs from 2000 to 2025.
 
 See `examples/example-briefs.md` for ready-to-use test prompts.
 
