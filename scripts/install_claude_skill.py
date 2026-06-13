@@ -33,7 +33,6 @@ def validate_source(src: Path) -> list[str]:
         src / "references" / "figure_house_style_guidelines.md",
         src / "references" / "core-colour-guidelines.md",
         src / "references" / "checking-function.md",
-        src / "assets" / "bad-examples",
         src / "scripts" / "check_r_setup.R",
         src / "scripts" / "install_r_dependencies.R",
     ]

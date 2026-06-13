@@ -128,10 +128,6 @@ Check for:
 
 Repair in R with `ggsave(width = ..., height = ..., dpi = ...)`, `theme(plot.margin = margin(...))`, legend placement changes, shorter labels, or adjusted `coord_cartesian(clip = "off")` when appropriate.
 
-Bad-example reference:
-
-`assets/bad-examples/cut-off-content.png`
-
 ### 5.3 Overlap And Collision
 
 Fail QA if any text, legend, label, annotation, axis, panel, or mark collides with another element.
@@ -146,10 +142,6 @@ Check for:
 6. Panel labels colliding with panel titles.
 
 Repair in R with `theme()` text margins, smaller text, label nudging, `geom_text(check_overlap = TRUE)` only when acceptable, `ggrepel` if available and suitable, legend repositioning, more output height, or more explicit patchwork layout.
-
-Bad-example reference:
-
-`assets/bad-examples/overlapping-items.png`
 
 ### 5.4 Variable Labels And Units
 
@@ -166,10 +158,6 @@ Check for:
 
 Repair in R with `labs(x = ..., y = ...)`, shared row or column labels, subtitles, `patchwork::plot_annotation()`, or direct panel labels.
 
-Bad-example reference:
-
-`assets/bad-examples/no-variable-labels.png`
-
 ### 5.5 Line Continuity And Temporal Structure
 
 Fail QA if a coherent time series is broken into disconnected line segments without an analytic reason.
@@ -182,10 +170,6 @@ Check for:
 4. Missing historical-forecast reference marker where the house style requires it.
 
 Repair in R by keeping one grouped data frame per series, mapping forecast status to `linetype`, adding a dotted vertical reference line with `geom_vline()`, or using a forecast-region annotation without breaking the trajectory.
-
-Bad-example reference:
-
-`assets/bad-examples/discontinuous-line-graphs.png`
 
 ### 5.6 Hierarchical Spacing
 
@@ -201,10 +185,6 @@ Check for:
 4. Legends whose grouped entries do not reflect the hierarchy of categories.
 
 Repair in R with explicit y positions, ordered factors with spacer rows, `scale_y_discrete(expand = ...)`, `geom_blank()` spacers, separate patchwork blocks, `plot_spacer()`, `plot_layout(heights = ..., widths = ...)`, or `theme(panel.spacing = unit(...))`.
-
-Bad-example reference:
-
-`assets/bad-examples/no-hierarchical-spacing.png`
 
 ### 5.7 Compactness And Unused Space
 
@@ -252,10 +232,6 @@ Check for:
 
 Repair in R with fixed patchwork design strings, `plot_layout(widths = ..., heights = ...)`, shared guides, common axis labels, consistent plot margins, and aligned legend placement.
 
-Bad-example reference:
-
-`assets/bad-examples/unabalanced-spacing-l-r.png`
-
 ### 5.10 Hairlines, Axes, Gridlines, And Reference Lines
 
 Fail QA if structural lines are either invisible or visually dominant.
@@ -299,14 +275,6 @@ Repair in R with `guides()`, `guide_legend()`, `theme(legend.position = ...)`, `
 
 Publication quality legends should be internally compact. Generous empty space around the legend section is acceptable, including a small tightly spaced legend sitting in a wide bottom strip. Excessively broad spacing between legend items, boxes, and labels must fail QA.
 
-Bad-example reference:
-
-`assets/bad-examples/legend-uneven.png`
-
-Bad-example reference:
-
-`assets/bad-examples/legend-crowded.png`
-
 ### 5.12 Typography And Text Hierarchy
 
 Fail QA if text does not follow the house style or cannot be read comfortably.
@@ -328,14 +296,6 @@ Check for:
 13. Overly long labels that should be shortened or wrapped.
 
 Repair in R with `theme(text = element_text(family = "Roboto"))`, `element_text(size = ..., face = ...)`, hierarchy-specific text sizes, concise labels, `stringr::str_wrap()`, shared labels instead of repeated labels, and removal of explanatory subtitles that belong in the manuscript text or figure footnote rather than inside the figure design.
-
-Bad-example reference:
-
-`assets/bad-examples/no-hierarchical-text.png`
-
-Bad-example reference:
-
-`assets/bad-examples/unnecessary-subtitles.png`
 
 ### 5.13 Colour, Contrast, And Palette Suitability
 

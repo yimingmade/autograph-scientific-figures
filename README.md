@@ -257,7 +257,6 @@ autograph-scientific-figures/
         agents/
           openai.yaml
         references/
-        assets/
         scripts/
           check_r_setup.R
           install_r_dependencies.R
@@ -266,7 +265,6 @@ autograph-scientific-figures/
       make-figure/
         SKILL.md
         references/
-        assets/
         scripts/
           check_r_setup.R
           install_r_dependencies.R
@@ -278,9 +276,6 @@ autograph-scientific-figures/
     figure_house_style_guidelines.md
     core-colour-guidelines.md
     checking-function.md
-  assets/
-    bad-examples/
-      *.png
   examples/
     minimal-data/
       burden_timeseries.csv
@@ -295,6 +290,8 @@ autograph-scientific-figures/
     install_claude_skill.py
     install_r_dependencies.R
   tests/
+    test_minimal_data.py
+    test_packaging.py
     test_r_dependency_scripts.py
   DESCRIPTION
 ```

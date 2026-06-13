@@ -16,9 +16,8 @@ Use these packaged references:
 1. `references/figure_house_style_guidelines.md`
 2. `references/core-colour-guidelines.md`
 3. `references/checking-function.md`
-4. `assets/bad-examples/`
-5. `scripts/check_r_setup.R`
-6. `scripts/install_r_dependencies.R`
+4. `scripts/check_r_setup.R`
+5. `scripts/install_r_dependencies.R`
 
 Resolve `./fig-dhs-output-main-dir` and `./fig-dhs-activesessions-dir` relative to the current project working directory unless the user explicitly supplies an absolute output directory.
 
