@@ -2,7 +2,7 @@
   <img src="docs/images-autograph/img1.png" alt="Autograph overview" width="900">
 </p>
 
-# Welcome to autograph
+# Welcome to _Autograph_
 
 A guided agentic workflow for generating publication-quality academic figures with R without coding. It gives an LLM a structured figure-generation process, visual and structural guidelines, and a thorough quality-checking protocol for creating, editing and refining figure files using R (.PNG outputs).
 
