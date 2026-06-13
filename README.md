@@ -14,7 +14,7 @@ Let your team spend more time on science and less on wrangling code.
   <img src="docs/images-autograph/img2.png" alt="Autograph figure workflow" width="900">
 </p>
 
-## How To Use
+## 1️⃣ How To Use
 
 Once installed, use Autograph through the installed `make-figure` skill. The two main commands are:
 
@@ -118,7 +118,7 @@ add alternating grey bars to make rows easier to read
 i like square markers and translucent CI lines
 ```
 
-## Professional colour, structure and design, every time, for your entire paper.
+## 2️⃣ Professional colour, structure and design, every time, for your entire paper.
 
 Autograph uses three bundled reference files during figure creation. 
 1. Style guidelines define graph-specific structure intelligently, including axis treatment, panel spacing, hierarchy, legends, labels, titles, export sizing, and when to use each graph type. Line graphs, forest plots, stacked bars, tornado plots, maps, and heatmaps.
@@ -132,7 +132,9 @@ Across a project, Autograph remembers your preferences and applies them intellig
   <img src="docs/images-autograph/img3.png" alt="Autograph colour structure and quality assurance workflow" width="900">
 </p>
 
-## Installation For AI Agents
+## Installation
+
+### Installation For AI Agents
 
 If a user asks an AI agent to install this repo, the agent should:
 
@@ -164,7 +166,7 @@ bash scripts/install.sh --all --validate-only
 
 Do not move files out of the skill folder during installation. The workflow resolves bundled references relative to `SKILL.md`.
 
-## Installation For Codex
+### Installation For Codex
 
 Recommended:
 
@@ -181,7 +183,7 @@ cp -R .codex/skills/make-figure "${CODEX_HOME:-$HOME/.codex}/skills/make-figure"
 
 Restart Codex after copying the skill.
 
-## Installation For Claude Code
+### Installation For Claude Code
 
 Recommended:
 
@@ -198,7 +200,7 @@ cp -R .claude/skills/make-figure "${CLAUDE_HOME:-$HOME/.claude}/skills/make-figu
 
 Restart Claude Code after copying the skill.
 
-## R Dependencies
+### R Dependencies
 
 On first use, the skill checks core R package availability before rendering a figure. If core packages are missing, the workflow installs the missing core packages with the bundled installer script.
 
@@ -265,9 +267,9 @@ Install selected optional packages only when a requested figure needs them:
 Rscript scripts/install_r_dependencies.R --packages ggrepel,showtext,sysfonts
 ```
 
-## Synthetic Example Data
+### Synthetic Example Data
 
-The files in `examples/minimal-data/` are fully synthetic. The values were invented de novo for workflow testing. They are not patient data, do not represent real GBD estimates, and were not copied or derived from GBD or any public dataset.
+The files in `examples/minimal-data/` are fully synthetic. The values were invented de novo for workflow testing. They are not patient data, do not represent real GBD estimates, and were not copied or from GBD or any public dataset.
 
 The example data support:
 
@@ -278,15 +280,15 @@ The example data support:
 
 See `examples/example-briefs.md` for ready-to-use test prompts.
 
-## Repository Notes
+### Repository Notes
 
 Generated figure outputs, active sessions, local R artefacts, and operating-system metadata should not be committed. The `.gitignore` file excludes these by default.
 
-## Licence
+### Licence
 
 This repository uses the MIT Licence. See `LICENSE`.
 
-## What Is Included
+### What Is Included
 
 ```text
 autograph-scientific-figures/
