@@ -118,7 +118,7 @@ add alternating grey bars to make rows easier to read
 i like square markers and translucent CI lines
 ```
 
-## 2️⃣ Professional colour, structure and design, every time, for your entire paper.
+## 2️⃣ Professional colour, structure and design, every time, for your entire paper
 
 Autograph uses three bundled reference files during figure creation. 
 1. Style guidelines define graph-specific structure intelligently, including axis treatment, panel spacing, hierarchy, legends, labels, titles, export sizing, and when to use each graph type. Line graphs, forest plots, stacked bars, tornado plots, maps, and heatmaps.
