@@ -1,10 +1,14 @@
-# Autograph: Generate figures from data without code
+[img1-here]
+
+# Welcome to autograph
 
 A guided agentic workflow for generating publication-quality academic figures with R without coding. It gives an LLM a structured figure-generation process, visual and structural guidelines, and a thorough quality-checking protocol for creating, editing and refining figure files using R (.PNG outputs).
 
 All data represented in figures is deterministic, originating from your source data files and called through R.
 
 Let your team spend more time on science and less on wrangling code.
+
+[img2-here]
 
 ## How To Use
 
@@ -15,7 +19,7 @@ Once installed, use Autograph through the installed `make-figure` skill. The two
 
 New to R? Autograph installs all required R dependencies needed automatically on first run.
 
-### How To `/make-figure` Effectively
+### Figure Creation is Simple
 
 Use `/make-figure` when you want to create a new figure. Give the agent:
 
@@ -31,42 +35,51 @@ For each figure, provide:
 2. Variables. Be as detailed as possible. Nevertheless, Autograph can infer filters or variables that are not directly provided based on context, but specify this to the user after output.
 3. Any other style constraints.
 
-### New Figure Example
+### Write as you are; Autograph figures out the rest
+
+[exp4-here]
 
 ```text
-/make-figure
-Input directory: /path/to/autograph-scientific-figures/examples/minimal-data
-Project name: burden demo
-Make a line graph of AS mortality rate from 2000 to 2025, global
-Use year on the x-axis, estimate on the y-axis, cause as colour, and lower/upper as uncertainty ribbons.
+/make-figure; my data is in users/yiming/desktop/data-file
+survival graph for my three age quartiles
 ```
 
-### Stacked Bar Example
+### Robust plots with minimal guidance
+
+[exp1-here]
 
 ```text
-/make-figure
-Input directory: /path/to/autograph-scientific-figures/examples/minimal-data
-Project name: example component demo
-Make a horizontal stacked bar graph using component_composition.csv.
-Show the percentage composition of total burden by component for each year.
-Use year as rows, component as fill, and percent as the value.
-Use direct, readable labels and keep the legend compact.
+/make-figure; my data is in users/yiming/desktop/data-file
+Make a stacked bar graph of DALYs and mortality from 1990 to 2050, each colour is one disease type, global, sex=both
+measure is on the y axis
+stack the two graphs vertically, parts a) and b)
+i want subtle pastel colours
 ```
 
-### Forest Plot Example
+### Understands complex graph types without code
+
+[exp2-here]
 
 ```text
-/make-figure
-Input directory: /path/to/autograph-scientific-figures/examples/minimal-data
-Project name: example subgroup demo
-Make a forest plot using subgroup_estimates.csv.
-Filter to year = 2025.
-Show estimate on the x-axis, subgroup on the y-axis, and lower/upper as confidence intervals.
-Use domain as colour and include a vertical reference line at reference_value = 1.
-Group related rows clearly.
+/make-figure of FOUR two sided bar ("tornado") plots arranged 2*2
+1. dalys 2023 (top left)
+2. deaths 2023 (top right)
+3. DALYs 2050 (bottom left)
+4. deaths 2050 (bottom right)
+male on the left x axis, female on the right x axis, and age down the y axis in the centre, with age strata arranged oldest (top) to youngest (bottom). stacked bars for each age strata. colour by type of disease
 ```
 
-### What `/make-figure edit` Does
+### Create multi-panel figures with ease
+
+[exp3-here]
+
+```text
+/make-figure a violin plot for my cholesterol and SBP data, measured from 2024 vs from 2025
+for the oldest age quartile only
+to show similarity or difference in the distribution of chol and SBP across chronic disease stages
+```
+
+### Edit your figures by talking to Autograph
 
 Use `/make-figure edit` when a figure already exists and you want to revise it. The edit command should point to the existing R script, PNG, or session output folder whenever possible.
 
@@ -77,20 +90,25 @@ Good edit requests specify:
 3. The exact visual or data change requested.
 4. Whether the change should preserve the current figure type and data filters.
 
-The skill edits the same figure-specific R script, writes the next versioned output folder, copies forward unchanged PNGs when needed, and visually checks that the requested edit is actually visible.
+Autograph edits the same figure-specific R script, writes the next versioned output folder, copies forward unchanged PNGs when needed, and visually checks that the requested edit is actually visible.
 
-### Edit Example
+If the target script or PNG cannot be identified, Autograph will stop and ask you to point to the figure that should be edited.
 
 ```text
 /make-figure edit
-Input directory: /path/to/autograph-scientific-figures/examples/minimal-data
-Existing script: ./fig-dhs-output-main-dir/example-burden-demo/r-code/age-standardised-mortality-line.R
-Existing PNG: ./fig-dhs-output-main-dir/example-burden-demo/output-DDMMYYYY-v1/age-standardised-mortality-line.png
-Please revise the figure by moving the legend below the plot, increasing the output height slightly, shortening long cause labels, and making the uncertainty ribbons lighter.
-Preserve the same data filters, figure type, axes, and colour mapping.
+I want to include 4 new rows for lab data: resting BP (10s), cholesterol (50s), max heart rate and FPG>120, 
+decrease spacing between rows
+add alternating grey bars to make rows easier to read
+i like square markers and translucent CI lines
 ```
 
-If the target script or PNG cannot be identified, the skill should stop and ask you to point to the figure that should be edited.
+[editexp-1]
+
+## Extensive colour, structure, quality assurance guidelines
+
+[info-here]
+
+[img3-here]
 
 ## Installation For AI Agents
 
@@ -295,3 +313,5 @@ autograph-scientific-figures/
     test_r_dependency_scripts.py
   DESCRIPTION
 ```
+
+[img4-here]
